@@ -18,7 +18,7 @@ app.use(express.json());
 
 // Allow cross-origin resource sharing
 app.use(cors({
-  origin: 'http://localhost:4000'
+  origin: ORIGIN
  
 }));
 
