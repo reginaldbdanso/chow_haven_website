@@ -2,7 +2,7 @@ export const menuItems = [
   {
     id: '1',
     name: 'Margherita Pizza',
-    description: 'Fresh tomatoes, mozzarella, basil, and olive oil',
+    description: 'Fresh tomatoes, mozzarella cheese, basil, and olive oil',
     price: 14.99,
     category: 'Pizza',
     image: 'https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?auto=format&fit=crop&w=800&q=80'

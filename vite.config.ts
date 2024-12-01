@@ -7,13 +7,13 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
-  // server: {
-  //   port: 3000,
-  //   host: true,
-  //   hmr: {
-  //     host: 'orange-pancake-pvqx9x6vgwg2r56j-3000.app.github.dev',
-  //     protocol: 'ws',
-  //     // host: 'localhost',
-  //   },
-  // },
+  server: {
+    port: 3000,
+    host: true,
+    hmr: {
+      // host: 'orange-pancake-pvqx9x6vgwg2r56j-3000.app.github.dev',
+      protocol: 'ws',
+      host: 'localhost',
+    },
+  },
 });

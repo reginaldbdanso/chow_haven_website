@@ -49,8 +49,8 @@ function App() {
         <header className="bg-white shadow-sm">
           <div className="max-w-7xl mx-auto px-4 py-6">
             <div className="flex items-center gap-2">
-              <UtensilsCrossed className="text-green-600" size={32} />
-              <h1 className="text-3xl font-bold text-gray-900">Fresh Bites</h1>
+              <UtensilsCrossed className="text-red-600" size={32} />
+              <h1 className="text-3xl font-bold text-gray-900">Chow Haven</h1>
             </div>
           </div>
         </header>

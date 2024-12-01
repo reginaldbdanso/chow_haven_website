@@ -25,7 +25,7 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item }) => {
         <p className="text-gray-600 mt-2">{item.description}</p>
         <button
           onClick={() => dispatch({ type: 'ADD_ITEM', payload: item })}
-          className="mt-4 w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
+          className="mt-4 w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors flex items-center justify-center gap-2"
         >
           <Plus size={20} />
           Add to Cart

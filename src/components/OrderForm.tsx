@@ -97,7 +97,7 @@ export const OrderForm: React.FC = () => {
       <button
         type="submit"
         disabled={state.items.length === 0 || submitting}
-        className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition-colors disabled:bg-gray-400"
+        className="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors disabled:bg-gray-400"
       >
         {submitting ? 'Placing Order...' : `Place Order ($${state.total.toFixed(2)})`}
       </button>
