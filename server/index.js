@@ -20,7 +20,7 @@ app.use((req, res, next) => {
   next();
 });
 
-if (process.env.BNODE_ENV) {
+if (process.env.BNODE_ENV === 'development') {
 
 const allowedOrigins = process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : [];
 
