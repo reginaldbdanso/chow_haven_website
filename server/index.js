@@ -14,6 +14,8 @@ const PORT = process.env.PORT;
 
 app.use(express.json());
 
+if (process.env.BNODE_ENV !== 'production') {
+
 const allowedOrigins = process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : [];
 
 // Allow requests from the allowed origins
@@ -26,10 +28,10 @@ app.use(cors({
         }
     }
 }));
-
+}
 
 // Serve static files in production
-if (process.env.NODE_ENV === 'production') {
+if (process.env.BNODE_ENV === 'production') {
   app.use(express.static(join(__dirname, '../dist')));
 }
 
@@ -53,8 +55,8 @@ app.post('/api/orders', (req, res) => {
 });
 
 // Handle client-side routing in production
-if (process.env.NODE_ENV === 'production') {
-  app.get('*', (req, res) => {
+if (process.env.BNODE_ENV === 'production') {
+  app.get('/', (req, res) => {
     res.sendFile(join(__dirname, '../dist/index.html'));
   });
 }
