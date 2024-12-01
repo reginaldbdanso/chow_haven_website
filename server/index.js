@@ -14,7 +14,13 @@ const PORT = process.env.PORT;
 
 app.use(express.json());
 
-if (process.env.BNODE_ENV !== 'production') {
+// log request path, method and timestamp
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path} - ${new Date().toISOString()}`);
+  next();
+});
+
+if (process.env.BNODE_ENV) {
 
 const allowedOrigins = process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : [];
 
@@ -28,18 +34,18 @@ app.use(cors({
         }
     }
 }));
-}
+} else {
 
 // Serve static files in production
-if (process.env.BNODE_ENV === 'production') {
   app.use(express.static(join(__dirname, '../dist')));
+
+// Handle client-side routing in production
+  app.get('/', (req, res) => {
+    res.sendFile(join(__dirname, '../dist/index.html'));
+  });
+
 }
 
-// log request path, method and timestamp
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.path} - ${new Date().toISOString()}`);
-  next();
-});
 
 
 // API Routes
@@ -54,12 +60,12 @@ app.post('/api/orders', (req, res) => {
   res.status(201).json({ message: 'Order received successfully', orderId: Date.now() });
 });
 
-// Handle client-side routing in production
-if (process.env.BNODE_ENV === 'production') {
-  app.get('/', (req, res) => {
-    res.sendFile(join(__dirname, '../dist/index.html'));
-  });
-}
+//handle 404
+app.use((req, res, next) => {
+  res.status(404).send('<h1>404 Not Found</h1>');
+});
+
+
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
