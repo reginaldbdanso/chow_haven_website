@@ -3,18 +3,27 @@ import cors from 'cors';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { menuItems } from './data/menuItems.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(express.json());
 
+// Allow cross-origin resource sharing
+app.use(cors({
+  origin: 'http://localhost:4000'
+ 
+}));
+
 // Serve static files in production
-if (process.env.NODE_ENV === 'production') {
+if (process.env.APPNODE_ENV === 'production') {
   app.use(express.static(join(__dirname, '../dist')));
 }
 
@@ -31,8 +40,8 @@ app.post('/api/orders', (req, res) => {
 });
 
 // Handle client-side routing in production
-if (process.env.NODE_ENV === 'production') {
-  app.get('*', (req, res) => {
+if (process.env.APPNODE_ENV === 'production') {
+  app.get('/', (req, res) => {
     res.sendFile(join(__dirname, '../dist/index.html'));
   });
 }

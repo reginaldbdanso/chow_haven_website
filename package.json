@@ -7,6 +7,7 @@
     "dev:all": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
     "dev:client": "vite",
     "dev": "nodemon server/index.js",
+    "dev:server": "nodemon server/index.js",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
