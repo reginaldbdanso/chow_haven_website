@@ -4,9 +4,10 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
+    "dev": "nodemon index.js",
+    "dev:all": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
     "dev:client": "vite",
-    "dev:server": "nodemon server/index.js",
+    "dev:server": "nodemon index.js",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
