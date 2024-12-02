@@ -32,10 +32,10 @@ export const menuItems = [
     image: 'https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=800&q=80'
   },
   {
-    id: '4',
+    id: '5',
     name: 'Jollof Rice with Chicken',
     description: 'tomatoes, onions, peppers, spices',
-    price: 55,
+    price: 12.99,
     category: 'Local dishes',
     image: 'https://drive.google.com/file/d/158UC0dhgkHbPM2_QfV_gQWnBjIOJWiRR/view?usp=drive_link'
   }
