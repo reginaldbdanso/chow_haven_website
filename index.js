@@ -37,11 +37,11 @@ app.use(cors({
 } else {
 
 // Serve static files in production
-  app.use(express.static(join(__dirname, '../dist')));
+  app.use(express.static(join(__dirname, './dist')));
 
 // Handle client-side routing in production
   app.get('/', (req, res) => {
-    res.sendFile(join(__dirname, '../dist/index.html'));
+    res.sendFile(join(__dirname, './dist/index.html'));
   });
 
 }
