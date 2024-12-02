@@ -37,6 +37,6 @@ export const menuItems = [
     description: 'tomatoes, onions, peppers, spices',
     price: 12.99,
     category: 'Local dishes',
-    image: 'https://drive.google.com/file/d/158UC0dhgkHbPM2_QfV_gQWnBjIOJWiRR/view?usp=drive_link'
+    image: 'https://drive.google.com/u/0/drive-viewer/AKGpihYfJJTuKjKoaQll2RaZyEgXKN53c8OvAV8_k9iiYnI5glx_FvRUezsL0fKm9Y1pE6J1D33YDT2oTCeJraAzEuGEGX4MhH772rg=s1600-rw-v1'
   }
 ];
