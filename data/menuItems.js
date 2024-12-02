@@ -22,5 +22,13 @@ export const menuItems = [
     price: 9.99,
     category: 'Salads',
     image: 'https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: '4',
+    name: 'Miami Salad',
+    description: 'Roasted Fresh lettuce, croutons, parmesan, and Caesar dressing',
+    price: 13.99,
+    category: 'Salads',
+    image: 'https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=800&q=80'
   }
 ];

@@ -20,21 +20,21 @@ app.use((req, res, next) => {
   next();
 });
 
-// if (process.env.BNODE_ENV !== 'production') {
+if (process.env.BNODE_ENV !== 'production') {
 
-// const allowedOrigins = process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : [];
+const allowedOrigins = process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : [];
 
-// // Allow requests from the allowed origins
-// app.use(cors({
-//     origin: function (origin, callback) {
-//         if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-//             callback(null, true);
-//         } else {
-//             callback(new Error('Not allowed by CORS'));
-//         }
-//     }
-// }));
-// } else {
+// Allow requests from the allowed origins
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
+}));
+} else {
 
 // Serve static files in production
   app.use(express.static(join(__dirname, './dist')));
@@ -44,7 +44,7 @@ app.use((req, res, next) => {
     res.sendFile(join(__dirname, './dist/index.html'));
   });
 
-// }
+}
 
 
 
