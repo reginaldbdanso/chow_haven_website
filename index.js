@@ -16,11 +16,11 @@ app.use(express.json());
 
 // log request path, method and timestamp
 app.use((req, res, next) => {
-  console.log(`${req.method} ${req.path} - ${new Date().toISOString()}`);
+  console.log(`${req.method} ${req.path} - ${new Date().toISOString()} - ${res.statusCode}`);
   next();
 });
 
-if (process.env.BNODE_ENV === 'development') {
+if (process.env.BNODE_ENV !== 'production') {
 
 const allowedOrigins = process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : [];
 
@@ -61,9 +61,9 @@ app.post('/api/orders', (req, res) => {
 });
 
 //handle 404
-app.use((req, res, next) => {
-  res.status(404).send('<h1>404 Not Found</h1>');
-});
+// app.use((req, res, next) => {
+//   res.status(404).send('<h1>404 Not Found</h1>');
+// });
 
 
 
