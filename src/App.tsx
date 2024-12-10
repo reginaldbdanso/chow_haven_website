@@ -8,6 +8,7 @@ import { fetchMenu } from './services/api';
 import { MenuItem } from './types';
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
+import Home2 from './pages/home2'; // Import Home page
 import Home from './pages/Home'; // Import Home page
 import About from './pages/About'; // Import About page
 import Menu from './pages/Menu'; // Import Menu page
@@ -59,6 +60,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/home2" element={<Home2 />} />
           </Routes>
         </div>
         <Footer />
