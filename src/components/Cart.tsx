@@ -21,7 +21,7 @@ export const Cart: React.FC = () => {
         <div key={item.id} className="flex items-center justify-between py-2 border-b">
           <div className="flex-1">
             <h3 className="font-medium">{item.name}</h3>
-            <p className="text-sm text-gray-600">${item.price.toFixed(2)}</p>
+            <p className="text-sm text-gray-600">GH₵{item.price.toFixed(2)}</p>
           </div>
           <div className="flex items-center gap-2">
             <button
@@ -55,7 +55,7 @@ export const Cart: React.FC = () => {
       <div className="mt-4 pt-4 border-t">
         <div className="flex justify-between font-semibold">
           <span>Total:</span>
-          <span>${state.total.toFixed(2)}</span>
+          <span>GH₵{state.total.toFixed(2)}</span>
         </div>
       </div>
     </div>
