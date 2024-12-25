@@ -1,10 +1,10 @@
 import React from 'react';
 import { MenuCard } from '../components/MenuCard';
 import { useCart } from '../context/CartContext';
-import { menuItems } from '../data/menuItems';
+import { menuItems } from '../../data/menuItems';
 
 const LocalMenu: React.FC = () => {
-  const localDishes = menuItems.filter(item => item.category === 'Local dishes');
+  const localDishes = menuItems.filter(item => item.category !== 'continental');
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
