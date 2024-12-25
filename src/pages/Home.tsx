@@ -24,14 +24,14 @@ const Home: React.FC<HomeProps> = ({ menuItems }) => {
             </div>
           </div>
           
-          <div className="lg:col-span-1">
+          {/* <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-md sticky top-8">
               <Cart />
               <div className="p-4 border-t">
                 <OrderForm />
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </main>
