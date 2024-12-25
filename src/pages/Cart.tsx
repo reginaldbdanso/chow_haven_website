@@ -68,11 +68,11 @@ const CartPage: React.FC = () => {
               <h3 className="text-lg font-semibold mb-2">Order Summary</h3>
               <div className="flex justify-between mb-2">
                 <span>Subtotal</span>
-                <span>${state.total.toFixed(2)}</span>
+                <span>GH₵ {state.total.toFixed(2)}</span>
               </div>
               <div className="flex justify-between font-semibold">
                 <span>Total</span>
-                <span>${state.total.toFixed(2)}</span>
+                <span>GH₵ {state.total.toFixed(2)}</span>
               </div>
             </div>
             <OrderForm />
