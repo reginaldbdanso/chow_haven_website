@@ -20,7 +20,7 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item }) => {
       <div className="p-4">
         <div className="flex justify-between items-start">
           <h3 className="text-lg font-semibold">{item.name}</h3>
-          <span className="text-green-600 font-semibold">${item.price.toFixed(2)}</span>
+          <span className="text-green-600 font-semibold">GH₵ {item.price.toFixed(2)}</span>
         </div>
         <p className="text-gray-600 mt-2">{item.description}</p>
         <button
