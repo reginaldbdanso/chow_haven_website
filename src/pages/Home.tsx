@@ -34,20 +34,23 @@ const specialMenus = [
 const Home: React.FC<HomeProps> = ({ menuItems }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [slideDirection, setSlideDirection] = useState<'left' | 'right'>('left');
 
   useEffect(() => {
     setIsVisible(true);
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % specialMenus.length);
+      nextSlide();
     }, 5000);
     return () => clearInterval(timer);
   }, []);
 
   const nextSlide = () => {
+    setSlideDirection('left');
     setCurrentSlide((prev) => (prev + 1) % specialMenus.length);
   };
 
   const prevSlide = () => {
+    setSlideDirection('right');
     setCurrentSlide((prev) => (prev - 1 + specialMenus.length) % specialMenus.length);
   };
 
@@ -84,7 +87,6 @@ const Home: React.FC<HomeProps> = ({ menuItems }) => {
 
       {/* Special Menu Carousel Section */}
       <div className="relative overflow-hidden bg-gray-900 py-16">
-        {/* Rest of the existing code... */}
         <div className="absolute inset-0 overflow-hidden">
           <img
             src={specialMenus[currentSlide].image}
@@ -95,40 +97,41 @@ const Home: React.FC<HomeProps> = ({ menuItems }) => {
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="text-center md:text-left text-white md:w-1/2">
-              <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
-                <Star className="text-yellow-400" fill="currentColor" />
-                <span className="text-yellow-400 font-semibold">FEATURED SPECIAL</span>
+          <div className="flex items-center justify-between">
+            <button
+              onClick={prevSlide}
+              className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors transform hover:scale-110"
+            >
+              <ChevronLeft className="text-white" size={24} />
+            </button>
+
+            <div className="flex-1 flex items-center transition-transform duration-700">
+              <div className="w-full md:w-1/2 text-white pl-12">
+                <div className="flex items-center gap-2 mb-4">
+                  <Star className="text-yellow-400" fill="currentColor" />
+                  <span className="text-yellow-400 font-semibold">FEATURED SPECIAL</span>
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                  {specialMenus[currentSlide].title}
+                </h2>
+                <p className="text-xl text-gray-300 mb-6">
+                  {specialMenus[currentSlide].description}
+                </p>
+                <div className="text-3xl font-bold text-yellow-400 mb-8">
+                  {specialMenus[currentSlide].price}
+                </div>
+                <button className="bg-red-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-red-700 transform hover:scale-105 transition-all duration-300">
+                  Order Now
+                </button>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-                {specialMenus[currentSlide].title}
-              </h2>
-              <p className="text-xl text-gray-300 mb-6">
-                {specialMenus[currentSlide].description}
-              </p>
-              <div className="text-3xl font-bold text-yellow-400 mb-8">
-                {specialMenus[currentSlide].price}
-              </div>
-              <button className="bg-red-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-red-700 transform hover:scale-105 transition-all duration-300">
-                Order Now
-              </button>
             </div>
-            
-            <div className="flex gap-4 md:w-1/2 justify-center">
-              <button
-                onClick={prevSlide}
-                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-              >
-                <ChevronLeft className="text-white" size={24} />
-              </button>
-              <button
-                onClick={nextSlide}
-                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-              >
-                <ChevronRight className="text-white" size={24} />
-              </button>
-            </div>
+
+            <button
+              onClick={nextSlide}
+              className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors transform hover:scale-110"
+            >
+              <ChevronRight className="text-white" size={24} />
+            </button>
           </div>
           
           {/* Carousel Indicators */}
@@ -136,7 +139,10 @@ const Home: React.FC<HomeProps> = ({ menuItems }) => {
             {specialMenus.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentSlide(index)}
+                onClick={() => {
+                  setSlideDirection(index > currentSlide ? 'left' : 'right');
+                  setCurrentSlide(index);
+                }}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
                   currentSlide === index ? 'bg-red-600 w-8' : 'bg-gray-400'
                 }`}
@@ -146,7 +152,7 @@ const Home: React.FC<HomeProps> = ({ menuItems }) => {
         </div>
       </div>
 
-      {/* Rest of the existing code... */}
+      {/* Rest of the component remains unchanged */}
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 gap-8">
           <div>
